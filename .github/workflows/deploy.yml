@@ -1,0 +1,22 @@
+name: Deploy MAIN release to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # optional manual trigger
+
+jobs:
+  deploy-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+
+      - name: Deploy Main
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: pages-main        # production deployment branch
+          publish_dir: ./releases           # folder containing static files
+          cname: zampos-printer-agent.zamdahealth.com
