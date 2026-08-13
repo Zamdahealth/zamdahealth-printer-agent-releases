@@ -18,5 +18,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: pages-main        # production deployment branch
-          publish_dir: ./releases           # folder containing static files
+          publish_dir: ./downloads           # folder containing static files
           cname: zampos-printer-agent.zamdahealth.com
