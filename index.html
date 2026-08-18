@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pharmacy Print Service — Download</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #ffffff;
+    --accent: #2563eb;
+    --accent-dark: #1d4ed8;
+    --text: #1e293b;
+    --muted: #64748b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 24px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 48px 40px;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    background: var(--accent);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon svg { width: 32px; height: 32px; stroke: white; }
+  h1 {
+    font-size: 22px;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+  p.subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 28px;
+  }
+  .version-badge {
+    display: inline-block;
+    background: #eff6ff;
+    color: var(--accent-dark);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    width: 100%;
+    transition: background 0.15s ease;
+  }
+  .download-btn:hover { background: var(--accent-dark); }
+  .download-btn svg { width: 18px; height: 18px; }
+  .footnote {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="6" y="2" width="12" height="12" rx="2"></rect>
+        <path d="M6 14H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8" rx="1"></rect>
+      </svg>
+    </div>
+    <h1>Pharmacy Print Service</h1>
+    <p class="subtitle">Printer agent for Zamdahealth pharmacy workstations</p>
+    <span class="version-badge" id="version-badge">Version 1.1.0</span>
+    <br>
+    <a class="download-btn" id="download-link" href="PharmacyPrintService-Installer.exe" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Download for Windows
+    </a>
+    <p class="footnote">Requires Windows 10 or later &middot; .exe installer</p>
+  </div>
+
+  <script>
+    // Pulls the current version/url straight from manifest.json so this page
+    // never goes stale when you ship a new release.
+    fetch('manifest.json')
+      .then(res => res.json())
+      .then(data => {
+        if (data.version) {
+          document.getElementById('version-badge').textContent = 'Version ' + data.version;
+        }
+        if (data.url) {
+          document.getElementById('download-link').href = data.url;
+        }
+      })
+      .catch(() => {
+        // manifest.json not reachable — static fallback values above still work
+      });
+  </script>
+</body>
+</html>
