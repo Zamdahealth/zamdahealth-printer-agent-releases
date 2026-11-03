@@ -1,4 +1,5 @@
 {
-  "version": "1.1.1",
-  "url": "https://zampos-printer-agent.zamdahealth.com/PharmacyPrintService-Installer.exe"
+  "version": "1.2.0",
+  "url": "https://zampos-printer-agent.zamdahealth.com/PharmacyPrintService-Installer.exe",
+  "signature": "bpLxRqE3XbmxHr3YJkel+T5yT5A2utRlo3aO4WKh02F4vhteOfr3f3kiXcofl5aIoqASKqzZEkvP/Ou+502wAg=="
 }
